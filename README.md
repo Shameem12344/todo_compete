@@ -100,7 +100,7 @@ This step might not be necessary as I only used base Django:
 pip install -r requirements.txt
 ```
 
-3. Make migrations:
+2. Make migrations:
 ```
 python manage.py makemigrations
 python manage.py migrate
@@ -109,7 +109,7 @@ python manage.py migrate
 ```
 python manage.py createsuperuser
 ```
-5. Run server:
+4. Run server:
 ```
 python manage.py runserver
 ```
