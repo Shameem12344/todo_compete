@@ -1,0 +1,19 @@
+{% extends 'todo_app/layout.html' %}
+
+{% block content %}
+<h2>{{ group.name }}</h2>
+<p>{{ group.description }}</p>
+<p>Created by: {{ group.creator.username }}</p>
+<p>Total Gems: {{ group.total_gems }}</p>
+<h3>Members:</h3>
+<ul class="list-group">
+    {% for member in group.members.all %}
+    <li class="list-group-item">{{ member.username }}</li>
+    {% endfor %}
+</ul>
+{% if user not in group.members.all %}
+<a href="{% url 'join_group' group.id %}" class="btn btn-primary mt-3">Join Group</a>
+{% else %}
+<a href="{% url 'leave_group' group.id %}" class="btn btn-danger mt-3">Leave Group</a>
+{% endif %}
+{% endblock %}

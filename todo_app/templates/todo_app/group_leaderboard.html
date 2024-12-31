@@ -1,0 +1,55 @@
+{% extends 'todo_app/layout.html' %}
+
+{% block content %}
+<h2 class="mb-4">Group Leaderboard</h2>
+
+{% if groups %}
+    <ul class="list-group">
+        {% for group_data in groups %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                    {{ forloop.counter }}.
+                    <a href="{% url 'group_detail' group_data.group.id %}">
+                        {{ group_data.group.name }}
+                    </a>
+                </span>
+                <span>
+                    <span class="badge bg-primary rounded-pill" title="Total Gems">{{ group_data.total_gems }}</span>
+                    <span class="badge bg-secondary rounded-pill ms-2" title="Members">{{ group_data.members_count }}</span>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+{% else %}
+    <p>No groups found.</p>
+{% endif %}
+
+<a href="{% url 'leaderboard' %}" class="btn btn-primary mt-3">View User Leaderboard</a>
+
+{% endblock %}

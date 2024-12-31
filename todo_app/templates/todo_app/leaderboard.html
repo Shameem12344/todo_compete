@@ -1,0 +1,55 @@
+{% extends 'todo_app/layout.html' %}
+
+{% block content %}
+<h2 class="mb-4">Leaderboard</h2>
+
+{% if leaderboard_data %}
+    <ul class="list-group">
+        {% for profile in leaderboard_data %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                    {{ page_obj.start_index|add:forloop.counter0 }}.
+                    <a href="{% url 'profile' profile.user.username %}">
+                        {{ profile.user.username }}
+                    </a>
+                </span>
+                <span>
+                    <span class="badge bg-primary rounded-pill me-2" title="All-time Gems">{{ profile.all_time_gems }}</span>
+                    <span class="badge bg-secondary rounded-pill" title="Current Gems">{{ profile.gems }}</span>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% else %}
+    <p>No users found.</p>
+{% endif %}
+
+{% if show_group_leaderboard %}
+    <a href="{% url 'group_leaderboard' %}" class="btn btn-primary">View Group Leaderboard</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'todo_app/layout.html' %}
+
+{% block content %}
+<h2>Groups</h2>
+<a href="{% url 'create_group' %}" class="btn btn-primary mb-3">Create New Group</a>
+<ul class="list-group">
+    {% for group in groups %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'group_detail' group.id %}">{{ group.name }}</a>
+        <span class="badge bg-primary rounded-pill">{{ group.members.count }} members</span>
+    </li>
+    {% empty %}
+    <li class="list-group-item">No groups available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

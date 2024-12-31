@@ -1,0 +1,33 @@
+{% extends 'todo_app/layout.html' %}
+{% load custom_filters %}
+{% block content %}
+<h2 class="mb-4">Shop</h2>
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="row">
+    {% for item in items %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text"><strong>Price:</strong> {{ item_prices|get_item:item.id }} gems</p>
+                <form action="{% url 'purchase_item' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

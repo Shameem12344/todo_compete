@@ -1,0 +1,84 @@
+/* Add your custom styles here */
+body {
+    padding-top: 20px;
+}
+
+.task-list {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: gray;
+    border-radius: 50%;
+    box-shadow: 0 0 10px gray, 0 0 20px gray, 0 0 30px gray;
+    animation: sparkle 1s ease-out;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link {
+    color: #e0e0e0;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #333;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-control {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #003d80;
+    border-color: #002752;
+}
+
+body.dark-mode .table {
+    color: #e0e0e0;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}

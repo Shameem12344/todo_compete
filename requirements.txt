@@ -1,0 +1,1 @@
+Django==5.0.6  # This is just the version I am on currently, could work on a lot of versions most likely.

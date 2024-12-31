@@ -1,0 +1,43 @@
+{% extends 'todo_app/layout.html' %}
+
+{% block content %}
+<h2>Tasks for today</h2>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if tasks %}
+    <ul class="list-group">
+        {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ task.title }}
+                {% if not task.completed %}
+                    <form method="post" action="{% url 'task_list' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                    </form>
+                {% else %}
+                    <span class="badge bg-success">Completed</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tasks for today.</p>
+{% endif %}
+
+<h3>Add a new task</h3>
+<form method="post" action="{% url 'task_list' %}">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <input type="text" name="title" class="form-control" placeholder="Task title" required>
+        <button type="submit" class="btn btn-primary">Add Task</button>
+    </div>
+</form>
+{% endblock %}
