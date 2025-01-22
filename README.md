@@ -16,6 +16,7 @@ Video demo at: https://youtu.be/5X8T8Yz9N2E
 * [Extras](#Extras)
    * [Shell command](#Shell-command)
    * [Git and branching](#Git-and-branching)
+* [Skills Learned](#Skills-Learned)
 
 # Introduction
 So the reason I created this app was due to the productivity and the growth I have had as an individual since I got a planner and started to write down each thing I was going to accomplish in the day. This sparked my interest to create a to-do styled app where the user types the goals they have each day and is rewarded for what they complete. The app stresses the idea that if you are cheating or lying for points you are only hurting yourself. The app aims at promoting a sense of urgency and productivity within individuals while also fostering a sense of community.
@@ -155,3 +156,22 @@ print(f"Updated {item.name} price to {item.price} gems")
 
 ## Git and branching
 Since the django application was so long and sophisticated, instead of doing it on this repository I switched into another repository and completed it on that and just pasted the files from there onto here because I want all my CS50 projects in this repository for future reference. The event that sparked me switching out of the repository was that I made a migration that completely broke my code, even though I eventually found out how to revert a migration with the deletion of the database, specifically the file of dbsqlite3, I still did not want it to happen and got out of this repository and incorporated branches when I reached valuable checkpoints. In this process I mastered Git as it was the real version and I got a complete grasp on branching and was able to use it in order to not break my code when I would go down rabbit holes to create new functionality for the program which happened many times. This project truly taught me how to efficiently work on a large scale and complex project and the insights and experience I got from it were timeless.
+
+# Skills Learned
+I learned a lot of distinct skills from this project including: 
+- Writing an ideal README
+- Mastering the intricacies of Django:
+   - Templates
+   - Models
+   - Views
+   - Urls
+   - Static
+   - context_processors
+   - templatetags
+   - Settings
+   - Migrations
+   - SuperUser
+   - Django Database
+- Git + Git Branching
+- Utilizing shell commands to store commands/data
+- Troubleshooting through the complexity that Django provides.
